@@ -32,4 +32,6 @@ node('maven') {
     }"""
     server.upload(uploadSpec)
   }
+  stash includes: 'target/hello-0.0.1.war',
+  name: 'binary'
 }
