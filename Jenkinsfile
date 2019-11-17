@@ -8,14 +8,12 @@ node('maven') {
     archive 'target/*.jar'
   }
   stage('Static Code Analysis'){
-          steps {
-		    withSonarQubeEnv('sonarqube-server'){
-            sh 'mvn clean verify sonar:sonar -Dsonar.projectName=maven -Dsonar.projectKey=maven -Dsonar.projectVersion=$BUILD_NUMBER';
-                                                }
-                }
-        }
+     withSonarQubeEnv('sonarqube-server'){
+       sh 'mvn clean verify sonar:sonar -Dsonar.projectName=maven -Dsonar.projectKey=maven -Dsonar.projectVersion=$BUILD_NUMBER';
+                                          }
+ }
+       
   
-
   stage ('Integration Test'){
     sh 'mvn clean verify -Dsurefire.skip=true';
     junit '**/target/failsafe-reports/TEST-*.xml'
