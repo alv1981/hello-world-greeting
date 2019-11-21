@@ -8,9 +8,12 @@ node('maven') {
     archive 'target/*.jar'
   }
   stage('Static Code Analysis'){
+     
+      def  scannerHome = tool 'Sonar-canner'
+    }
      withSonarQubeEnv('sonarqube-server'){
       
-       sh 'mvn clean verify sonar:sonar -Dsonar.projectName=maven -Dsonar.projectKey=maven -Dsonar.projectVersion=$BUILD_NUMBER';
+      sh "${scannerHome}/sonar-scanner"
          
      }
  }
