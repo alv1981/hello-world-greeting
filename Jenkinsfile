@@ -10,7 +10,7 @@ node('maven') {
   stage('Static Code Analysis'){
      
       def  scannerHome = tool 'Sonar-canner'
-    }
+    
      withSonarQubeEnv('sonarqube-server'){
       
       sh "${scannerHome}/sonar-scanner"
