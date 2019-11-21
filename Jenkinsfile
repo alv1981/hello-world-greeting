@@ -11,7 +11,8 @@ node('maven') {
      withSonarQubeEnv('sonarqube-server'){
       
        // sh 'mvn clean verify sonar:sonar -Dsonar.projectName=maven -Dsonar.projectKey=maven -Dsonar.projectVersion=$BUILD_NUMBER';
-        sh './sonar-scanner -v'                                  }
+       sh "${scannerHome}/sonar-scanner"  
+     }
  }
        
   
