@@ -10,8 +10,8 @@ node('maven') {
   stage('Static Code Analysis'){
      withSonarQubeEnv('sonarqube-server'){
       
-       // sh 'mvn clean verify sonar:sonar -Dsonar.projectName=maven -Dsonar.projectKey=maven -Dsonar.projectVersion=$BUILD_NUMBER';
-       sh 'mvn clean package sonar:sonar' 
+       sh 'mvn clean verify sonar:sonar -Dsonar.projectName=maven -Dsonar.projectKey=maven -Dsonar.projectVersion=$BUILD_NUMBER';
+         
      }
  }
        
