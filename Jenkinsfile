@@ -15,7 +15,7 @@ node('maven') {
       
       //sh "${scannerHome}/sonar-scanner"
        withSonarQubeEnv(credentialsId:'sonar_token',installationName:'sonarqube-server') {
-              sh 'sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar   -Dsonar.projectName=maven  -Dsonar.projectKey=maven'
+              sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar   -Dsonar.projectName=maven  -Dsonar.projectKey=maven'
          
      }
  }
