@@ -9,13 +9,13 @@ node('maven') {
   }
   stage('Static Code Analysis'){
      
-      //def  scannerHome = tool 'Sonar-canner'
+      def  scannerHome = tool 'scanner'
     
      //withSonarQubeEnv('sonarqube-server'){
       
       //sh "${scannerHome}/sonar-scanner"
        withSonarQubeEnv(credentialsId:'sonar_token',installationName:'sonarqube-server') {
-              sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.6.0.1398:sonar   -Dsonar.projectName=maven  -Dsonar.projectKey=maven'
+              sh '${scannerHome}/scanner   -Dsonar.projectName=maven  -Dsonar.projectKey=maven'
          
      }
  }
